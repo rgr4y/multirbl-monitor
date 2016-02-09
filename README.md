@@ -1,10 +1,21 @@
 # multirbl-monitor
 
-Monitors multiple DNSRBLs and can send you an e-mail if your host is blacklisted.
+Monitors multiple DNSRBLs and can send you an e-mail if your SMTP host is blacklisted.
 
 ```sh
 usage: MultiRbl.php [-b -n -e -h=smtp.yourdomain.com] [--show-blacklists-only=y --no-color=y --email-if-bl=y --host=smtp.yourdomain.com]
 ```
+
+### Installation & Usage
+
+
+```sh
+git clone https://github.com/deftx/multirbl-monitor
+cd multirbl-monitor
+composer install
+```
+
+Then, edit MultiRbl.php and change the e-mail settings to match your configuration.
 
 ### Install in a crontab
 ```
