@@ -29,8 +29,8 @@ $noColor      = parseArgs($mArgs, 'n', 'no-color');
 
 // Only output blacklist information
 $blOnly       = parseArgs($mArgs, 'b', 'show-blacklists-only');
-
 // END
+
 // Configure e-mail settings here
 
 // Use PHP's mailer
@@ -58,10 +58,6 @@ if (strlen($queryHost) <= 0) {
 }
 
 echo "Checking host " . $queryHost . "\n";
-
-if (strlen($email) <= 0) {
-	$email = false;
-}
 
 $scrapeUrl = 'http://multirbl.valli.org/lookup/'. $queryHost.'.html';
 $jsonUrl = 'http://multirbl.valli.org/json-lookup.php';
@@ -131,6 +127,7 @@ foreach ($l_ids as $k=>$id) {
 			'method' => 'POST',
 			'header' => [
 				'Content-Type: application/x-www-form-urlencoded',
+				'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36',
 				'X-Requested-With: XMLHttpRequest',
 			],
 			'content' => $postdata
@@ -221,7 +218,7 @@ foreach ($listedResults as $k=>$res) {
 
 	$tempBuffer = ob_get_clean();
 
-	if ($email && $res['blType'] == 'b') {
+	if ($email) {
 		$emailBody .= $tempBuffer;
 	}
 
