@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mgargano/simplehtmldom": "^1.5",
+        "sensiolabs/ansi-to-html": "^1.1"
+    }
+}
